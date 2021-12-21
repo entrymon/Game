@@ -53,9 +53,31 @@ public class Game{
 
     // Write code to identify and announce winner's name and score
     private void declareWinner(){
+        Map<Integer, Integer> scoreMap = new HashMap();
+            for (LeaderBoardEntry entry : leaderBoard.leaderBoardEntry) {
+                if (scoreMap.containsKey(entry.participant.id)) {
+                    scoreMap.put(entry.participant.id, scoreMap.get(entry.participant.id) + entry.score);
+                } else {
+                    scoreMap.put(entry.participant.id, entry.score);
+                }
+            }
+            int mID = 0, mS = -1;
+            for (Entry<Integer, Integer> scoreEntry : scoreMap.entrySet()) {
+                if (mS < scoreEntry.getValue()) {
+                    mS = scoreEntry.getValue();
+                    mID = scoreEntry.getKey();
+                }
+                }
+                String winName = "";
+                for (Participant p : participants) {
+                    if (p.id == mID) {
+                        winName = p.name;
+                    break;
+                    }
+                }
        
 
-       System.out.println(".... and the WINNER is " + " with score " );
+       System.out.println(".... and the WINNER is "+winName + " with score "+mS );
     }
 
 
