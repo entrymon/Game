@@ -29,7 +29,7 @@ class LeaderBoard {
     }
 }
 
-class Game{
+public class Game{
 
     Random rn = new Random();
     List<Participant> participants = new ArrayList<Participant>();
