@@ -53,9 +53,15 @@ public class Game{
 
     // Write code to identify and announce winner's name and score
     private void declareWinner(){
-       
-
-       System.out.println(".... and the WINNER is " + " with score " );
+        String winner = "";
+        int score = 0;
+        for(int i=0; i<leaderBoard.leaderBoardEntry.toArray().length;i++){
+            if(score < leaderBoard.leaderBoardEntry.get(i).score){
+                winner = leaderBoard.leaderBoardEntry.get(i).participant.name;
+                score = leaderBoard.leaderBoardEntry.get(i).score;
+            }
+        }
+        System.out.println(".... and the WINNER is "+ winner + " with score "+score );
     }
 
 
